@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.138
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassTransitRepro.Publisher", "MassTransitRepro.Publisher\MassTransitRepro.Publisher.csproj", "{488B1504-0102-47E1-BD40-97EE07182D5C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassTransitRepro.Consumer", "MassTransitRepro.Consumer\MassTransitRepro.Consumer.csproj", "{5B1B514E-E0A8-49E1-8031-59344FBEEF68}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{46663EA2-1386-4AA8-A563-742B865EE54E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassTransitRepro.Shared", "MassTransitRepro.Shared\MassTransitRepro.Shared.csproj", "{91507E59-A6DA-4464-B867-4F295A47F699}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{488B1504-0102-47E1-BD40-97EE07182D5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{488B1504-0102-47E1-BD40-97EE07182D5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{488B1504-0102-47E1-BD40-97EE07182D5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{488B1504-0102-47E1-BD40-97EE07182D5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B1B514E-E0A8-49E1-8031-59344FBEEF68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B1B514E-E0A8-49E1-8031-59344FBEEF68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B1B514E-E0A8-49E1-8031-59344FBEEF68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B1B514E-E0A8-49E1-8031-59344FBEEF68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46663EA2-1386-4AA8-A563-742B865EE54E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46663EA2-1386-4AA8-A563-742B865EE54E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46663EA2-1386-4AA8-A563-742B865EE54E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46663EA2-1386-4AA8-A563-742B865EE54E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91507E59-A6DA-4464-B867-4F295A47F699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91507E59-A6DA-4464-B867-4F295A47F699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91507E59-A6DA-4464-B867-4F295A47F699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91507E59-A6DA-4464-B867-4F295A47F699}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1298462-B900-4B98-85FE-5DFA9608C5FF}
+	EndGlobalSection
+EndGlobal

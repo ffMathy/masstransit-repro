@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  masstransitrepro.consumer:
+    image: ${DOCKER_REGISTRY-}masstransitreproconsumer
+    build:
+      context: .
+      dockerfile: MassTransitRepro.Consumer/Dockerfile
+
+  masstransitrepro.publisher:
+    image: ${DOCKER_REGISTRY-}masstransitrepropublisher
+    build:
+      context: .
+      dockerfile: MassTransitRepro.Publisher/Dockerfile
+
+  localstack:
+    image: localstack/localstack:0.8.7
+    ports:
+      - "4567-4583:4567-4583"
+      - "9898:${PORT_WEB_UI-8080}"
+    environment:
+      - SERVICES=sqs
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - HOSTNAME=localstack
+      - HOSTNAME_EXTERNAL=localhost
+      - DEFAULT_REGION=eu-west-1     
+    volumes:
+      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
