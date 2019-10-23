@@ -21,11 +21,19 @@ namespace MassTransitRepro.Publisher
         {
             while (true)
             {
-                await _publishEndpoint.Publish(new SampleMessage()
+                Console.WriteLine("Publishing.");
+                try
                 {
-                    Foo = "bar",
-                    Time = DateTime.Now
-                });
+                    await _publishEndpoint.Publish(new SampleMessage()
+                    {
+                        Foo = "bar",
+                        Time = DateTime.Now
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex);
+                }
 
                 await Task.Delay(1000);
             }
@@ -39,7 +47,7 @@ namespace MassTransitRepro.Publisher
 
             IocSetup.Register(
                 services,
-                environmentName: args[0],
+                environmentName: Environment.GetEnvironmentVariable("ENVIRONMENT_NAME"),
                 additionalRegistrations: null);
 
             var serviceProvider = services.BuildServiceProvider();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using Amazon;
 using Amazon.Runtime;
 using Amazon.SimpleNotificationService;
@@ -22,6 +23,8 @@ namespace MassTransitRepro.Shared
             string environmentName,
             Action<IServiceCollectionConfigurator> additionalRegistrations)
         {
+            Console.WriteLine("Setup: " + Assembly.GetEntryAssembly()?.FullName + ", " + environmentName);
+
             services.AddSingleton<IHostEnvironment>(new HostingEnvironment()
             {
                 EnvironmentName = environmentName
@@ -39,11 +42,11 @@ namespace MassTransitRepro.Shared
                             Region = RegionEndpoint.EUWest1,
                             AmazonSnsConfig = new AmazonSimpleNotificationServiceConfig()
                             {
-                                ServiceURL = "http://localhost:4575"
+                                ServiceURL = "http://kubernetes.docker.internal:4575"
                             },
                             AmazonSqsConfig = new AmazonSQSConfig()
                             {
-                                ServiceURL = "http://localhost:4576"
+                                ServiceURL = "http://kubernetes.docker.internal:4576"
                             },
                             Credentials = new BasicAWSCredentials("foo", "bar")
                         });

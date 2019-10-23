@@ -37,7 +37,7 @@ namespace MassTransitRepro.Consumer
 
             IocSetup.Register(
                 services,
-                environmentName: args[0],
+                environmentName: Environment.GetEnvironmentVariable("ENVIRONMENT_NAME"),
                 additionalRegistrations: configurator =>
                 {
                     configurator.AddConsumer<SampleMessageConsumer>();

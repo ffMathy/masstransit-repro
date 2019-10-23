@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using MassTransit;
 using MassTransitRepro.Shared;
 using Microsoft.Extensions.Hosting;
@@ -21,6 +22,7 @@ namespace MassTransitRepro.Publisher
 
         public async Task Consume(ConsumeContext<SampleMessage> context)
         {
+            Console.WriteLine("Consuming.");
             _logger.LogInformation("Consumed!", _hostEnvironment.EnvironmentName, context.Message);
         }
     }

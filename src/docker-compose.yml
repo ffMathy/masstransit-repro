@@ -1,17 +1,37 @@
 version: '3.4'
 
 services:
-  masstransitrepro.consumer:
+  masstransitrepro.consumer.staging:
     image: ${DOCKER_REGISTRY-}masstransitreproconsumer
     build:
       context: .
       dockerfile: MassTransitRepro.Consumer/Dockerfile
+    environment:
+      ENVIRONMENT_NAME: "Staging"
 
-  masstransitrepro.publisher:
+  masstransitrepro.consumer.production:
+    image: ${DOCKER_REGISTRY-}masstransitreproconsumer
+    build:
+      context: .
+      dockerfile: MassTransitRepro.Consumer/Dockerfile
+    environment:
+      ENVIRONMENT_NAME: "Production"
+
+  masstransitrepro.publisher.staging:
     image: ${DOCKER_REGISTRY-}masstransitrepropublisher
     build:
       context: .
       dockerfile: MassTransitRepro.Publisher/Dockerfile
+    environment:
+      ENVIRONMENT_NAME: "Staging"
+
+  masstransitrepro.publisher.production:
+    image: ${DOCKER_REGISTRY-}masstransitrepropublisher
+    build:
+      context: .
+      dockerfile: MassTransitRepro.Publisher/Dockerfile
+    environment:
+      ENVIRONMENT_NAME: "Production"
 
   localstack:
     image: localstack/localstack:0.8.7
@@ -22,7 +42,7 @@ services:
       - SERVICES=sqs
       - DOCKER_HOST=unix:///var/run/docker.sock
       - HOSTNAME=localstack
-      - HOSTNAME_EXTERNAL=localhost
+      - HOSTNAME_EXTERNAL=kubernetes.docker.internal
       - DEFAULT_REGION=eu-west-1     
     volumes:
       - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
